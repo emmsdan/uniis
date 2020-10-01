@@ -1,28 +1,29 @@
-# iSecure-send-api
+# UNIIS
 
-I woke up one morning and decided to do "**_A simple end-to-end encrypted file sending system_**". That's why we have this project.
+A folk of my own project to build something more simple and useable for me
 
-It has just three main feature:
+I wanted to send a file I got online from A window PC to a linux, did not want to download something serious...
+##### ALL I WANTED WAS, SELECT MY FILE AND SEND IT TO THE OTHER DEVICE, NOT SOME TECHNICAL STUFFS...
+So, I folked my old repo, and made it simpler for me...
+Please don't ask me why ***UNIIS*** because I don't know
 
-- upload files and secure
-- control file access/download
-  - download files a number of times.
-  - files can't be downloaded after a particular time
-- only the person sent to can access/download it.
 
-but you can contribute to it by just raising a PR.
+### Use if you want... simple as A to F
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/d0992ff1-6656-49bc-b9bc-d0a4da9306d9/deploy-status)](https://app.netlify.com/sites/secure-share/deploys)
+## HOW TO USE
 
-## INFO
+### OPTION 1
 
-- LIVE API: https://my-secure-share-api.herokuapp.com/
-- BACKEND REPO: https://github.com/emmsdan/isecure-send-api
-- MOCKUP: https://www.figma.com/proto/ml4thm5jNdLfhb2kFTmOVh/iSecure-Sharer?node-id=3%3A424&scaling=scale-down
-- LIVE APP/DEMO: https://secure-share.netlify.com/
+#### TURN ON DEVICE wifi
 
-## TECHS
+#### RUN
 
-- ReachJs
-- Jest
-- heroku
+```
+npx @emmsdan/uniis -p=9012
+```
+
+#### Go to the other PC, Tablet, Mobile (ok anything wifi enabled) and connect to your other device
+
+#### Open the url on the screen or (coming soon....just scan the qr code.)
+
+#### start sending files
