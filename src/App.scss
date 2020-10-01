@@ -1,0 +1,133 @@
+$text-light: #a4c8e0;
+$text-dark: #226699;
+$button-light: #226699;
+$light: #ffffff;
+
+@mixin rings($duration, $delay) {
+  opacity: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: 0;
+  bottom: 0;
+  content: "";
+  height: 100%;
+  width: 100%;
+  border: 8px solid rgba(0, 0, 0, 0.2);
+  border-radius: 100%;
+  animation-name: ripple;
+  animation-duration: $duration;
+  animation-delay: $delay;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.65, 0, 0.34, 1);
+  z-index: -1;
+}
+
+@keyframes ripple {
+  from {
+    opacity: 1;
+    transform: scale3d(0.75, 0.75, 1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale3d(1.5, 1.5, 1);
+  }
+}
+
+.backOver {
+  position: absolute;
+  height: 97%;
+  width: 98%;
+  top: 10px;
+  left: 10px;
+}
+.main {
+  position: absolute;
+  top: 10%;
+  bottom: -10%;
+  height: 80%;
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.logo {
+  height: 70px;
+  position: absolute;
+}
+
+.ripple {
+  opacity: 0.2;
+  @include rings(1s, 0.5s);
+  position: absolute;
+  border: 3px solid $text-light;
+  border-radius: 50%;
+  z-index: -1000;
+  width: 300px;
+  height: 300px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
+
+  margin: auto auto;
+  &:nth-of-type(2) {
+    width: 400px;
+    height: 400px;
+  }
+  &:nth-of-type(3) {
+    width: 500px;
+    height: 500px;
+  }
+  &:nth-of-type(4) {
+    width: 600px;
+    height: 600px;
+  }
+}
+
+.download-background {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
+  width: 30vh;
+  border-radius: 100%;
+  background: #ffffff;
+  // box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
+
+  .content {
+    text-align: center;
+    width: 400px;
+
+    .icon {
+      font-size: 5rem;
+      color: $text-dark;
+      opacity: 0.5;
+    }
+    h2 {
+      margin: 0 auto 20px auto;
+      opacity: 0.4;
+    }
+    .button {
+      font-size: 12px !important;
+      background: $text-dark;
+      background: $button-light;
+      box-shadow: 0px 0px 24px $button-light;
+      color: $light;
+    }
+  }
+  &::after {
+    @include rings(1s, 0s);
+  }
+
+  &::before {
+    @include rings(1s, 0.5s);
+  }
+}
