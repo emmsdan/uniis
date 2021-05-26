@@ -126,6 +126,7 @@ label {
     padding: 2px;
     border-radius: 12px; 
 }
+
  .progress-container {
     background:#ccc;
     width: 100%;
@@ -137,7 +138,16 @@ label {
     height: 30px;
     cursor: pointer;
 }
-
+#download {
+    display: none;
+}
+#download-section .progress-container {
+    display: none;
+}
+#download-section .file {
+    margin: 10px;
+    cursor: pointer;
+}
 
 .file .close img {
     width: 15px;
@@ -152,7 +162,7 @@ label {
     height: 10px;
 }
 
-.poweredby {
+.poweredby, .open-download {
     position: fixed;
     right: 2%;
     bottom: 10%;
@@ -164,21 +174,29 @@ label {
     color: #fff;
     transition: width 2s;
 }
-.poweredby:hover span {
+.poweredby:hover span, .open-download:hover span {
     display: none;
 }
-.poweredby a {
+.poweredby a, .open-download a {
     display: none;
 }
 
-.poweredby:hover a {
+.poweredby:hover a, .open-download:hover a {
     text-align: center;
     font-size: 16px;
     text-decoration: none;
     display: block;
     color: #fff;
 }
-
+.open-download {
+    top: 0;
+    max-height: 40px;
+    overflow: hidden;
+}
+.open-download img {
+    width: 31px;
+    height: 31px;
+}
 .hide {
     display: none;
     visibility: hidden;

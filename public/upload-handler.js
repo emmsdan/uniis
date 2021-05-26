@@ -10,7 +10,7 @@ const userCanUpload = () => {
   );
 };
 const closeIcon =
-  "https://www.iconfinder.com/data/icons/ionicons/512/icon-close-512.png";
+  "./icon-close-512.png";
 // check if user's browser can upload file
 if (!userCanUpload) {
   alert("Sorry your browser is outdated, update to use this app");

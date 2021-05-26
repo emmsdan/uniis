@@ -77,6 +77,25 @@ app.post('/upload', function(req, res) {
     })
   }
 });
+
+// get all uploaded files
+app.get('/files', function (req, res) {
+  fs.readdir(CREATE_DIR, (err, files) => {
+    const fileInfo = [];
+    files.forEach(file => {
+      const stats = fs.statSync(CREATE_DIR + '/' + file)
+      const fileSize = stats.size / (1024*1024);
+      let hash = new Buffer(file).toString('base64');
+      fileInfo.push({ name:  path.parse(file).name, id: hash, size: fileSize.toFixed(2) + 'mb' })
+    });
+    res.json(fileInfo)
+  });
+})
+
+app.get('/download/:id', function (req, res) {
+  let buff = new Buffer(req.params.id, 'base64').toString('ascii');
+  res.download(CREATE_DIR + '/'+ buff)
+})
 app.all('*', (req, res) => {
   res.status(404).json('dead')
 })
