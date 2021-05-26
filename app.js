@@ -11,7 +11,7 @@ const ips = getAllIps('v4')
 const CMD = cmd(8000)
 const PORT = CMD.PORT;
 app.use(express.static('public'))
-app.use('/form', express.static(__dirname + '/public/index.html'));
+app.use('/form', express.static(path.join(__dirname, 'public', 'index.html')));
 
 // default options
 app.use(fileUpload());
@@ -20,7 +20,7 @@ app.get('/ping', function(req, res) {
   res.send('pong');
 });
 const DEFAULT_FOLDER_NAME =  'uniis_share';
-const CREATE_DIR = FILE_UPLOAD_DIR = path.join(process.env.HOME, DEFAULT_FOLDER_NAME)
+const CREATE_DIR = FILE_UPLOAD_DIR = path.join(process.env.HOME || "", DEFAULT_FOLDER_NAME)
 fs.exists(CREATE_DIR, (doesFileExist) => {
  if (doesFileExist)return;
  fs.mkdir(CREATE_DIR, (err) => {
@@ -44,14 +44,12 @@ app.post('/upload', function(req, res) {
     return path.join(FILE_UPLOAD_DIR,  fileName + append + extention)
   }
   sampleFile = req.files.file;
-  console.log(sampleFile)
   let fileName = sampleFile.name;
   uploadPath = getNewFileName(fileName)
   let counter = 10; 
   doesFileExist = true;
   
   do {
-    console.log({doesFileExist, uploadPath})
     doesFileExist = fs.existsSync(uploadPath)
     if (!doesFileExist){
       break

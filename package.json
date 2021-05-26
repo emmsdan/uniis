@@ -1,6 +1,6 @@
 {
   "name": "@emmsdan/uniis",
-  "version": "0.0.7",
+  "version": "0.0.9",
   "description": "A folk of my own project to build something more simple and useable for me",
   "main": "index.js",
   "scripts": {
