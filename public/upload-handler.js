@@ -9,8 +9,7 @@ const userCanUpload = () => {
     "Promise" in window
   );
 };
-const closeIcon =
-  "./icon-close-512.png";
+const closeIcon = "./icon-close-512.png";
 // check if user's browser can upload file
 if (!userCanUpload) {
   alert("Sorry your browser is outdated, update to use this app");
@@ -47,19 +46,18 @@ if (!userCanUpload) {
     handleFileUpload(dataTransfer.files, filesSectionElem);
   });
   input("change", (event) => {
-      handleFileUpload(event.target.files, filesSectionElem)
-  })
+    handleFileUpload(event.target.files, filesSectionElem);
+  });
 }
 
 function handleFileUpload(files, parentElement) {
-  
   Array.from(files).forEach(async (file, index) => {
     const info = await getFileInfo(file);
-    
-    const id = info.id + info.name.replace(/[^a-zA-Z0-9]/g,'_')
-    createFileElem({...info, id }, parentElement, index);
-    const progress = document.querySelector( '#progress-' + id);
-    const error = document.querySelector( '#error-' + id);
+
+    const id = info.id + info.name.replace(/[^a-zA-Z0-9]/g, "_");
+    createFileElem({ ...info, id }, parentElement, index);
+    const progress = document.querySelector("#progress-" + id);
+    const error = document.querySelector("#error-" + id);
     // upload file, and show progressbar
     const formData = new FormData();
     formData.append("file", file);
@@ -68,19 +66,21 @@ function handleFileUpload(files, parentElement) {
         headers: {
           "Content-Type": "multipart/form-data",
         },
-         
-            onUploadProgress: function(progressEvent) {
-              const percentCompleted = Math.round( (progressEvent.loaded * 100) / progressEvent.total );
-              progress.style.width = `${percentCompleted}%`;
-        }
+
+        onUploadProgress: function (progressEvent) {
+          const percentCompleted = Math.round(
+            (progressEvent.loaded * 100) / progressEvent.total
+          );
+          progress.style.width = `${percentCompleted}%`;
+        },
       })
       .then(function () {
         console.log("SUCCESS!!");
-        progress.style.backgroundColor = 'green';
+        progress.style.backgroundColor = "green";
       })
       .catch(function (e) {
         console.log("FAILURE!!", e);
-        error.innerHTML = e?.response?.data?.message || e?.message
+        error.innerHTML = e?.response?.data?.message || e?.message;
       });
   });
 }
@@ -95,11 +95,11 @@ async function getFileInfo(file) {
   let icon;
   const imgExist = await fetch(`/icons/${type}.svg`);
   if (!imgExist) {
-    icon = `/icons/file.svg`
+    icon = `/icons/file.svg`;
   } else {
-    icon =  `/icons/${type}.svg`
+    icon = `/icons/${type}.svg`;
   }
-  
+
   return {
     name: file.name,
     type,
@@ -107,4 +107,3 @@ async function getFileInfo(file) {
     icon,
   };
 }
-

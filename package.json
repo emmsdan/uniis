@@ -27,9 +27,9 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "express-fileupload": "^1.2.0"
+    "express-fileupload": "^1.2.0",
+    "mime-types": "^2.1.31"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/emmsdan/uniis.git"
